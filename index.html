@@ -8,11 +8,49 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 100px 0;
+  margin: 0;
   background: #fafafa;
+  color: #333;
 }
 
-/* popup background layer */
+/* ---- Generic blog style ---- */
+header {
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+.site-title {
+  margin: 0;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.blog-content {
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: left;
+  padding: 0 20px;
+}
+.blog-content article {
+  margin-bottom: 30px;
+}
+.blog-content h2 {
+  color: #333;
+}
+footer {
+  text-align: center;
+  color: #666;
+  margin: 50px 0;
+  font-size: 0.9em;
+}
+
+/* ---- Popup styles ---- */
 .popup-bg {
   display: none;
   position: fixed;
@@ -23,18 +61,18 @@ body {
   z-index: 1000;
 }
 
-/* popup box */
 .popup-content {
   position: relative;
-  background: #000;
+  background: #000; /* black popup */
   color: #fff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   max-width: 520px;
+  text-align: center;
 }
 
-/* close "X" */
+/* Close "X" */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -46,10 +84,10 @@ body {
   transition: color 0.2s;
 }
 .close-btn:hover {
-  color: #000;
+  color: #fff;
 }
 
-/* rainbow animated text */
+/* Rainbow animated text */
 .rainbow-text {
   background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
   background-size: 400% 100%;
@@ -64,7 +102,11 @@ body {
   100% { background-position: 100% 50%; }
 }
 
-/* green PLAY NOW button */
+/* Flashing green "PLAY NOW!" button */
+@keyframes flash {
+  0%, 100% { background-color: #28a745; }
+  50% { background-color: #00ff5e; }
+}
 .play-now-btn {
   background: #28a745;
   color: #fff;
@@ -81,26 +123,47 @@ body {
 .play-now-btn:hover {
   background: #218838;
 }
-  @keyframes flash {
-  0%, 100% { background-color: #28a745; }  /* normal green */
-  50% { background-color: #00ff5e; }       /* bright green flash */
-}
-
 </style>
 </head>
 <body>
 
-<h1>Welcome to the Art Popup</h1>
-<p>This page opens the experience automatically.</p>
+<header>
+  <h1 class="site-title">The Copy</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Travel</a>
+    <a href="#">Lifestyle</a>
+    <a href="#">About</a>
+  </nav>
+</header>
 
+<main class="blog-content">
+  <article>
+    <h2>Exploring Hidden Gems in Small Towns</h2>
+    <p>Discover how unexpected corners offer the most memorable stories — from quiet cafés to forgotten trails on the edge of nowhere.</p>
+  </article>
+  <article>
+    <h2>Morning Routines That Actually Work</h2>
+    <p>We tried five different influencer routines so you don’t have to. Here’s how to find one that you can stick with past day three.</p>
+  </article>
+  <article>
+    <h2>Why Analog Photography Is Making a Comeback</h2>
+    <p>Film is dead, long live film. Here’s why the tactile joy of imperfect photos is reshaping the digital age aesthetic.</p>
+  </article>
+</main>
+
+<footer>
+  <p>© 2024 The Copy — All rights reserved.</p>
+</footer>
+
+<!-- Popup -->
 <div id="popup" class="popup-bg">
   <div class="popup-content">
     <span id="closePopup" class="close-btn">&times;</span>
     <h2 class="rainbow-text">!!99% OF PEOPLE CAN'T SOLVE THIS!!</h2>
 
-    <!-- Your Netlify-hosted game -->
     <iframe
-      src="https://homegardenmergescape.netlify.app/"
+      src="[copydraft.netlify.app](https://copydraft.netlify.app/)"
       width="500"
       height="400"
       style="border:none;"
@@ -116,18 +179,18 @@ const popup = document.getElementById('popup');
 const closeBtn = document.getElementById('closePopup');
 const playNowBtn = document.getElementById('playNowBtn');
 
-// show popup automatically when the page loads
+// Show popup automatically on load
 window.addEventListener('load', () => {
   popup.style.display = 'flex';
 });
 
-// closing X opens new tab
+// Clicking the close X opens new tab
 closeBtn.onclick = () => {
   window.open(window.location.href, '_blank');
   popup.style.display = 'none';
 };
 
-// PLAY NOW! button opens new tab
+// Clicking PLAY NOW opens new tab
 playNowBtn.onclick = () => {
   window.open(window.location.href, '_blank');
 };
