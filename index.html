@@ -25,6 +25,7 @@ body {
 
 /* popup box */
 .popup-content {
+  position: relative;
   background: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -32,50 +33,53 @@ body {
   max-width: 520px;
 }
 
-button {
-  background: #4285f4;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 6px;
+/* close "X" */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #aaa;
   cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #000;
 }
 </style>
 </head>
 <body>
 
 <h1>Welcome to the Art Popup</h1>
-<p>Click below to begin your experience.</p>
-
-<button id="showPopup">Open Popup</button>
+<p>This page opens the experience automatically.</p>
 
 <div id="popup" class="popup-bg">
   <div class="popup-content">
+    <span id="closePopup" class="close-btn">&times;</span>
     <h2>Play the Game</h2>
 
     <!-- Your Netlify-hosted game -->
     <iframe
-      src="https://copydraft.netlify.app/"
+      src="https://homegardenmergescape.netlify.app/"
       width="500"
       height="400"
       style="border:none;"
       allowfullscreen>
     </iframe>
-
-    <button id="closePopup">Try to close</button>
   </div>
 </div>
 
 <script>
 const popup = document.getElementById('popup');
-const showBtn = document.getElementById('showPopup');
 const closeBtn = document.getElementById('closePopup');
 
-// open popup
-showBtn.onclick = () => popup.style.display = 'flex';
+// show popup automatically when the page loads
+window.addEventListener('load', () => {
+  popup.style.display = 'flex';
+});
 
-// close popup -> open new tab of same page
+// close icon -> open new tab of same page
 closeBtn.onclick = () => {
   window.open(window.location.href, '_blank');
   popup.style.display = 'none';
@@ -84,3 +88,4 @@ closeBtn.onclick = () => {
 
 </body>
 </html>
+
