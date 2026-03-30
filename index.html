@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Art Loop Popup</title>
 <style>
+  /* rainbow animated text */
+.rainbow-text {
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 4s linear infinite;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -57,7 +72,8 @@ body {
 <div id="popup" class="popup-bg">
   <div class="popup-content">
     <span id="closePopup" class="close-btn">&times;</span>
-    <h2>Play the Game</h2>
+    <h2 class="rainbow-text">!!99% OF PEOPLE CAN'T SOLVE THIS!!</h2>
+
 
     <!-- Your Netlify-hosted game -->
     <iframe
