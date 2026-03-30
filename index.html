@@ -76,10 +76,16 @@ body {
   cursor: pointer;
   transition: background 0.25s;
   margin-top: 15px;
+  animation: flash 1.2s infinite;
 }
 .play-now-btn:hover {
   background: #218838;
 }
+  @keyframes flash {
+  0%, 100% { background-color: #28a745; }  /* normal green */
+  50% { background-color: #00ff5e; }       /* bright green flash */
+}
+
 </style>
 </head>
 <body>
