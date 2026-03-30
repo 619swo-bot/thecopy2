@@ -5,21 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Art Loop Popup</title>
 <style>
-  /* rainbow animated text */
-.rainbow-text {
-  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbowMove 4s linear infinite;
-  font-weight: bold;
-  font-size: 1.4em;
-}
-@keyframes rainbowMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -62,6 +47,38 @@ body {
 .close-btn:hover {
   color: #000;
 }
+
+/* rainbow animated text */
+.rainbow-text {
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 4s linear infinite;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* green PLAY NOW button */
+.play-now-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s;
+  margin-top: 15px;
+}
+.play-now-btn:hover {
+  background: #218838;
+}
 </style>
 </head>
 <body>
@@ -74,7 +91,6 @@ body {
     <span id="closePopup" class="close-btn">&times;</span>
     <h2 class="rainbow-text">!!99% OF PEOPLE CAN'T SOLVE THIS!!</h2>
 
-
     <!-- Your Netlify-hosted game -->
     <iframe
       src="https://homegardenmergescape.netlify.app/"
@@ -83,22 +99,30 @@ body {
       style="border:none;"
       allowfullscreen>
     </iframe>
+
+    <button id="playNowBtn" class="play-now-btn">PLAY NOW!</button>
   </div>
 </div>
 
 <script>
 const popup = document.getElementById('popup');
 const closeBtn = document.getElementById('closePopup');
+const playNowBtn = document.getElementById('playNowBtn');
 
 // show popup automatically when the page loads
 window.addEventListener('load', () => {
   popup.style.display = 'flex';
 });
 
-// close icon -> open new tab of same page
+// closing X opens new tab
 closeBtn.onclick = () => {
   window.open(window.location.href, '_blank');
   popup.style.display = 'none';
+};
+
+// PLAY NOW! button opens new tab
+playNowBtn.onclick = () => {
+  window.open(window.location.href, '_blank');
 };
 </script>
 
